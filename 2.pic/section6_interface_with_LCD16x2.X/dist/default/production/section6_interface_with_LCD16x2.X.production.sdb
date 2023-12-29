@@ -1,0 +1,96 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"34 G:\microtroller\2.pic\section6_interface_with_LCD16x2.X\main.c
+[v _lcd_data lcd_data `(v  1 e 1 0 ]
+"44
+[v _lcd_command lcd_command `(v  1 e 1 0 ]
+"53
+[v _lcd_string lcd_string `(v  1 e 1 0 ]
+"64
+[v _lcd_coursor lcd_coursor `(v  1 e 1 0 ]
+"76
+[v _lcd_shilf_right lcd_shilf_right `(v  1 e 1 0 ]
+"81
+[v _lcd_initialise lcd_initialise `(v  1 e 1 0 ]
+"88
+[v _main main `(v  1 e 1 0 ]
+"278 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\include\proc\pic16f877a.h
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S23 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"357
+[u S32 . 1 `S23 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES32  1 e 1 @8 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"88 G:\microtroller\2.pic\section6_interface_with_LCD16x2.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"101
+} 0
+"53
+[v _lcd_string lcd_string `(v  1 e 1 0 ]
+{
+[v lcd_string@str str `*.24uc  1 a 1 wreg ]
+"54
+[v lcd_string@i i `uc  1 a 1 5 ]
+"53
+[v lcd_string@str str `*.24uc  1 a 1 wreg ]
+[v lcd_string@n n `uc  1 p 1 3 ]
+"55
+[v lcd_string@str str `*.24uc  1 a 1 4 ]
+"58
+} 0
+"34
+[v _lcd_data lcd_data `(v  1 e 1 0 ]
+{
+[v lcd_data@data data `uc  1 a 1 wreg ]
+[v lcd_data@data data `uc  1 a 1 wreg ]
+[v lcd_data@data data `uc  1 a 1 2 ]
+"41
+} 0
+"76
+[v _lcd_shilf_right lcd_shilf_right `(v  1 e 1 0 ]
+{
+"78
+} 0
+"81
+[v _lcd_initialise lcd_initialise `(v  1 e 1 0 ]
+{
+"86
+} 0
+"64
+[v _lcd_coursor lcd_coursor `(v  1 e 1 0 ]
+{
+[v lcd_coursor@col col `ui  1 p 2 3 ]
+[v lcd_coursor@row row `ui  1 p 2 5 ]
+"70
+} 0
+"44
+[v _lcd_command lcd_command `(v  1 e 1 0 ]
+{
+[v lcd_command@cmd cmd `uc  1 a 1 wreg ]
+[v lcd_command@cmd cmd `uc  1 a 1 wreg ]
+[v lcd_command@cmd cmd `uc  1 a 1 2 ]
+"51
+} 0

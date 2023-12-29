@@ -1,0 +1,10 @@
+GIE    : thanh ghi cho phép ngắt tổng
+PIEIE  : cho phép ngắt ngoại vi
+TMR0IE : thanh ghi cho pheps ngắt timer0
+TMR0IF : cờ tràn khi có tín hiệu tràn 
+
+
+công thức tính thời gian ngắt
+
+delay_time = (TMR0)
+
