@@ -1,0 +1,2 @@
+weew stack : stm32f103c8
+https://www.youtube.com/playlist?list=PLtVUYRe-Z-mcjXXFBte61L8SjyI377VNq
