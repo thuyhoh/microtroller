@@ -9,6 +9,7 @@ int main(void){
 	init_gp(PA,0,IN,I_PP);
 	init_gp(PC,13,OUT50,O_GP_PP);
 	
+	//int i = 0;
 	__disable_irq(); // vo hieu hoa toan bo ngat trong he thong
 	AFIO->EXTICR[0] = 0x00; // kich hoat ngat EXTI0
 	EXTI->IMR |= 1; // thanh ghi cho phep bat ngat ngoai vi rieng le: bit0->9: xac dinh muc do uu tien cua cac ngat ngoai vi

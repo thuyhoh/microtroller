@@ -1,16 +1,63 @@
+/*
+ * File     : 	systick_time.c
+ * Author   :   Nguyen Trong Thuy
+ * date     :   17/2/2024
+ * update   :   change code 
+ * document :   PM0214-datasheet
+*/
+
 #include "systick_time.h"
 #include "stm32f10x.h"                  // Device header
 
+/*
+	Thanh ghi: SysTick_reg
+*** SysTick->CTRL (0xE000E010) SysTick control and status register:
+		bit 0: ENABLE (Counter enable): bit kich hoat bo dem 
+				- Khi duoc set 1, bo dem tai gia tri RELOAD tu thanh ghi SysTick->LOAD va sau do dem nguoc
+	    	    khi dem den 0 thi COUNTFLAG(bit 16) = 1; tuy chon xac nhan cua SysTick phu thuoc vao gt TICKINT(bit 1)
+				sau do tai lai gt RELOAD va tiep tuc dem lai
+			0: Counter disabled
+			1: Counter enabled
+			
+		bit 1: TICKINT (SysTick exception request enable): bit cho phep ngat
+			0: Counting down to zero does not assert the SysTick exception request. // dem xuong toi 0 ko can xac nhan yeu cau ngoai le SysTick 
+			1: Counting down to zero to asserts the SysTick exception request.      // Ðem nguoc ve 0 can xac nhan yêu cau ngoai le SysTick
+			note: phan mem su dung COUNTFLAG xac dinh SysTick co dem den 0 hay ko
+			
+		bit 2: CLKSOURCE (Clock source selection): bit chon nguon xung clock			
+			0: AHB/8					// 	su dung xung stm/8
+			1: Processor clock (AHB)	//	su dung xung hoat dong cua stm
+			
+		bit 16: COUNTFLAG: bit flag dem
+			Return 1 neu SysTick->LOAD dem den 0 ke tu khi lan cuoi cung duoc doc
+
+*************************************************************************************************************************************************			
+
+*** SysTick->LOAD (0xE000E014) SysTick reload value register:
+		bit 0-23: RELOAD value
+				- Thanh ghi LOAD chi dinh gia tri bat dau de tai vao thanh ghi SysTick->VAL khi bo dem duoc kich hoat va khi dem den 0.
+				Gia tri RELOAD trong pham vi 0x00000001 - 0x00FFFFFF. note: gt RELOAD co the bang 0 nhung khong co y nghia
+				* Caculate RELOAD_value: 
+					+ de tao bo dem thoi gian sau N xung nhip thi gia tri RELOAD can la N-1.
+					+ de cung cap 1 ngat SysTick sau do tre N xung nhip bo xu ly, gia tri RELOAD can la N
+					Ex: muon tao ra do tre la 1ms thi can 72000 xung clock -> gia tri RELOAD = 72000 - 1
+
+*************************************************************************************************************************************************			
+
+*** SysTick->VAL(0xE000E018) SysTick current value register: 
+		bit 0-23: CURRENT (Current counter value)
+				- thanh ghi chua gia tri hien tai cua bo dem SysTick. Cac lan doc tra ve gia tri hien tai cua bo dem SysTick
+				Viec ghi bat cu gia tri nao vao trong thanh ghi cung se xoa truong ve 0 va cung xoa COUNTFLAG(bit 16-SysTick->CTRL) ve 0
+
+*/
 
 void Systick_init(void){
-	// reset reg value
+	// reset regsistot value
 	SysTick->CTRL = 0;
 	SysTick->LOAD = 0x00ffffff;
-	
-	// SysTick->LOAD thanh ghi load duoc ghi vao SysTick->VAL
 	SysTick->VAL = 0;
 	
-	// enable bit 0,2
+	// enable counter
 	SysTick->CTRL |= 5;
 }
 
@@ -18,8 +65,8 @@ void DelayMilis(void){
 	SysTick->LOAD = 0x1A5E0; // 0x1A5E0: so xung duoc tao ra trong 1ms 108Mhz
 	SysTick->VAL = 0;
 	
-	while((SysTick->CTRL & 0x00010000) == 0);
-	// SysTick_CTRL->bit17: co ngat khi SysTick->VAL dem 1->0
+	while((SysTick->CTRL & 0x00010000) == 0); // cho den khi bit COUNTFLAG(bit 16) duoc bat len 
+
 }
 
 void Delayms(unsigned long t){
@@ -29,11 +76,14 @@ void Delayms(unsigned long t){
 }
 
 void systick_int_start(void){
-	__disable_irq();
+	// tat toan bo ngat tren ngoai vi
+	__disable_irq(); 
 	SysTick->CTRL = 0;
-	SysTick->LOAD = 72000;
+	SysTick->LOAD = 72000 - 1;
 	SysTick->VAL = 0;
+	// set TICKINT = 1; enable interrupt
 	SysTick->CTRL |= 7;
+	// cho phep ngat hoat dong
 	__enable_irq();
 	
 }

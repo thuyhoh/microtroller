@@ -45,6 +45,8 @@ int main(void){
 		* UART2:->DFT
 	*/
 	
+	
+	
 	Systick_init();
 	UART_init(2,115200);
 	UART_init(3,115200);
@@ -56,7 +58,8 @@ int main(void){
 */
 	while(1){
 		if(uart_2_mgr[1] == 1){ // receive from uart2 and transmits to uart 3
-			UART_SEND(3,UART2_msg);
+			//UART_SEND(3,UART2_msg);
+			esp_setup(UART3_msg,UART2_msg,uart_3_mgr,uart_2_mgr);
 			uart_2_mgr[1] = 0;
 			str_empty(UART2_msg);
 		}
