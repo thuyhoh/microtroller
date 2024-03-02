@@ -54,27 +54,24 @@ int R_GP(unsigned short port, unsigned short pin)
 	return state;
 }
 
-void W_GP(unsigned short port, unsigned short pin, unsigned short state)
+void W_GP(unsigned short PORT,unsigned short pin, unsigned short STATUS)
 {
-		volatile unsigned long * ODR;
-		unsigned long offset = 0x03;
-
-	
-	if(port == 1)
+	volatile unsigned long * ODR;
+	unsigned long offset = 0x03;
+	if(PORT == 1)
 		{
-			ODR = (volatile unsigned long *) (&GPIO_A + offset);
+			ODR = (volatile unsigned long *)(&GPIO_A + offset);
 		}
-	else if(port == 2)
+	else if(PORT == 2)
 		{
-			ODR = (volatile unsigned long *) (&GPIO_B + offset);
+		ODR = (volatile unsigned long *)(&GPIO_B+ offset);
 		}
-	else if(port == 3)
-	{
-		ODR = (volatile unsigned long *) (&GPIO_C + offset);
-	}
-	state ? (*ODR |= (state<<pin)) : (*ODR &= ~(1<<pin));
+	else if(PORT == 3)
+		{
+		ODR = (volatile unsigned long *)(&GPIO_C+ offset);
+		}
+	STATUS ? (*ODR |= (STATUS<<pin)) : (*ODR &= ~(1<<pin));
 }
-
 void toggle_GP(unsigned short port, unsigned short pin)
 {
 	if (R_GP(port,pin))

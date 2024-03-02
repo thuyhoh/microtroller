@@ -77,7 +77,7 @@ void UART_init(unsigned short usart, unsigned long BR){
 		USART1->CR1 |= 0x2000;
 		USART1->CR1 |= 0x20;
 		NVIC_EnableIRQ(USART1_IRQn);		
-		__enable_irq;
+		__enable_irq();
 	}
 	else if(usart == 2){
 		__disable_irq();
@@ -93,7 +93,7 @@ void UART_init(unsigned short usart, unsigned long BR){
 		USART2->CR1 |= 0x2000;
 		USART2->CR1 |= 0x20;
 		NVIC_EnableIRQ(USART2_IRQn);		
-		__enable_irq;
+		__enable_irq();
 	}
 	else if(usart == 3){
 		__disable_irq();
@@ -109,7 +109,7 @@ void UART_init(unsigned short usart, unsigned long BR){
 		USART3->CR1 |= 0x2000;
 		USART3->CR1 |= 0x20;
 		NVIC_EnableIRQ(USART3_IRQn);		
-		__enable_irq;
+		__enable_irq();
 	}
 }
 
@@ -168,13 +168,13 @@ if process" strug to fullfill, cnt, signal
 */
 
 /*    UART Manager
-	0 - count
-	1 - signal
-	2 - bridge
-	3 - terminator should 1: terminator / 0 : interrupt
-	4 - terminator char
-	5 - time cst
-	6 - time counter 
+	0 - count																						/// bo dem tin nhan gui qua usart
+	1 - signal																					/// tin hieu hoan thanh tin nhan
+	2 - bridge																					/// kiem tra co thuc hien cau noi hay khon 
+	3 - terminator should 1: terminator / 0 : interrupt /// thuc hien ngat hoac khong
+	4 - terminator char																	/// ky tu ket thuc
+	5 - time cst																				/// thoi gian gui usart
+	6 - time counter 																		/// thoi gian dem 
 */
 
 // cau noi chi thuc hien duoc khi 2 thiet bi co cung toc do baudrate //
@@ -183,8 +183,8 @@ void UART_ISR(unsigned short uart, unsigned short uart_mgr[], char msg[]){
 	// kiem tra brignal = ? -> != 0(thuc hien cau noi)
 	if(uart_mgr[2] == 0){ 
 		msg[uart_mgr[0]] = UART_Rx(uart); // nhan thong tin tu USARTx
-		if(uart_mgr[3]){ // kiem tra terminator = ? -> = 0 -> interrupt/ != 0 -> terminator
-			
+		if(uart_mgr[3]){ // kiem tra co thuc hien ngat hay khon g
+			// khong thuc hien ngat
 			if(msg[uart_mgr[0]] == uart_mgr[4]){
 				uart_mgr[0] = 0;
 				uart_mgr[1] = 1;
@@ -193,6 +193,7 @@ void UART_ISR(unsigned short uart, unsigned short uart_mgr[], char msg[]){
 			}
 			
 		}else{
+			// thuc hen ngat
 			// timer strategy
 			uart_mgr[0]++;
 			uart_mgr[6] = uart_mgr[5];

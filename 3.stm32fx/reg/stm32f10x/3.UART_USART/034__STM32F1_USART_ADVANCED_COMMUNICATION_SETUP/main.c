@@ -48,6 +48,10 @@ unsigned short uart_3_mgr[7] = {0,0,0,0,'\n',0,0};
 char chat = 'C';
 char msg[30] = "hello thuy";
 
+void USART2_IRQHandler();
+void USART2_IRQHandler();
+void USART2_IRQHandler();
+
 int main(void){
 	Systick_init();
 	UART_init(1,9600);

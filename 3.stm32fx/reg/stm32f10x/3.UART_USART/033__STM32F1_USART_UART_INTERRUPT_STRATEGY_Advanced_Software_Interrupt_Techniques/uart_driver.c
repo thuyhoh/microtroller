@@ -77,7 +77,7 @@ void UART_init(unsigned short usart, unsigned long BR){
 		USART1->CR1 |= 0x2000;
 		USART1->CR1 |= 0x20;
 		NVIC_EnableIRQ(USART1_IRQn);		
-		__enable_irq;
+		__enable_irq();
 	}
 	else if(usart == 2){
 		__disable_irq();
@@ -93,7 +93,7 @@ void UART_init(unsigned short usart, unsigned long BR){
 		USART2->CR1 |= 0x2000;
 		USART2->CR1 |= 0x20;
 		NVIC_EnableIRQ(USART2_IRQn);		
-		__enable_irq;
+		__enable_irq();
 	}
 	else if(usart == 3){
 		__disable_irq();
@@ -109,7 +109,7 @@ void UART_init(unsigned short usart, unsigned long BR){
 		USART3->CR1 |= 0x2000;
 		USART3->CR1 |= 0x20;
 		NVIC_EnableIRQ(USART3_IRQn);		
-		__enable_irq;
+		__enable_irq();
 	}
 }
 

@@ -18,7 +18,7 @@ void Systick_init(void){
 // set up delay 1(ms) function
 
 void DelayMilis(void){
-	SysTick->LOAD = 0x1A5E0; // 0x1A5E0: so xung duoc tao ra trong 1ms 108Mhz
+	SysTick->LOAD = 72000; // 72000: so xung duoc tao ra trong 1ms 108Mhz
 	SysTick->VAL = 0;
 	
 	while((SysTick->CTRL & 0x00010000) == 0);

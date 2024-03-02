@@ -39,7 +39,7 @@ unsigned long  UART_BRR(unsigned short usart, unsigned long BR){
 	}
 	// UART_BRR : DIV_Mantissa[11:4] : DIV_Fraction[3:0]
 	final = (div<<4); 
-	final += dec; 
+	final += dec; 	
 	return final;
 }
 

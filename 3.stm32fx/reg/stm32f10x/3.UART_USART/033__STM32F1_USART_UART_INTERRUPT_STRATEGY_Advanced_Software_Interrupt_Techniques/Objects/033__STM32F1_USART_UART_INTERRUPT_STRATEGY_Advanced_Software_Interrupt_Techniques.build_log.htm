@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.39.0.0
 Copyright (C) 2023 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: thuy ASUS, non, LIC=----
+License Information: nguyen trong_thuy, non, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.39.0.0
@@ -21,13 +21,93 @@ Target DLL:      UL2CM3.DLL V1.164.9.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-E:\2.Embedded\1.microtroller\3.stm32fx\reg\stm32f10x\3.UART_USART\033__STM32F1_USART_UART_INTERRUPT_STRATEGY_Advanced_Software_Interrupt_Techniques\033__STM32F1_USART_UART_INTERRUPT_STRATEGY_Advanced_Software_Interrupt_Techniques.uvprojx
-Project File Date:  01/25/2024
+E:\2.Embedded\microtroller\3.stm32fx\reg\stm32f10x\3.UART_USART\033__STM32F1_USART_UART_INTERRUPT_STRATEGY_Advanced_Software_Interrupt_Techniques\033__STM32F1_USART_UART_INTERRUPT_STRATEGY_Advanced_Software_Interrupt_Techniques.uvprojx
+Project File Date:  02/25/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
-main.c(1): warning: In file included from...
+Rebuild target 'Target 1'
+gp_driver.c(24): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+   24 |         *CR &= ~(0xf<<(tPIN)*4);
+      |             ~~ ^~~~~~~~~~~~~~~~
+gp_driver.c(25): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+   25 |         *CR |= ((dir<<(tPIN*4))| (opt << (tPIN * 4 + 2)));
+      |             ~~  ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+gp_driver.c(20): warning: variable 'CR' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+   20 |         else if(port == 3){
+      |                 ^~~~~~~~~
+gp_driver.c(24): note: uninitialized use occurs here
+   24 |         *CR &= ~(0xf<<(tPIN)*4);
+      |          ^~
+gp_driver.c(20): note: remove the 'if' if its condition is always true
+   20 |         else if(port == 3){
+      |              ^~~~~~~~~~~~~
+gp_driver.c(4): note: initialize the variable 'CR' to silence this warning
+    4 |         volatile unsigned long * CR;
+      |                                    ^
+      |                                     = 0
+gp_driver.c(44): warning: implicit conversion changes signedness: 'unsigned long' to 'int' [-Wsign-conversion]
+   44 |         state = ((*IDR & (1<<pin))>>(pin));
+      |               ~  ~~~~~~~~~~~~~~~~~^~~~~~~
+gp_driver.c(41): warning: variable 'IDR' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+   41 |         else if(port == 3){
+      |                 ^~~~~~~~~
+gp_driver.c(44): note: uninitialized use occurs here
+   44 |         state = ((*IDR & (1<<pin))>>(pin));
+      |                    ^~~
+gp_driver.c(41): note: remove the 'if' if its condition is always true
+   41 |         else if(port == 3){
+      |              ^~~~~~~~~~~~~
+gp_driver.c(32): note: initialize the variable 'IDR' to silence this warning
+   32 |         volatile unsigned long * IDR;
+      |                                     ^
+      |                                      = 0
+gp_driver.c(62): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+   62 |         status ? (*ODR |= (status << pin)) : (*ODR &= ~(1<<pin));
+      |                        ~~  ~~~~~~~^~~~~~
+gp_driver.c(57): warning: variable 'ODR' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+   57 |         else if(port == 3){
+      |                 ^~~~~~~~~
+gp_driver.c(61): note: uninitialized use occurs here
+   61 |         *ODR &= 0x0;//  reset value of ODR
+      |          ^~~
+gp_driver.c(57): note: remove the 'if' if its condition is always true
+   57 |         else if(port == 3){
+      |              ^~~~~~~~~~~~~
+gp_driver.c(50): note: initialize the variable 'ODR' to silence this warning
+   50 |         volatile unsigned long * ODR;
+      |                                     ^
+      |                                      = 0
+gp_driver.c(14): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   14 |                 CR = (volatile unsigned long*)(&GPIO_A +offset);
+      |                                                ^~~~~~~
+gp_driver.c(18): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   18 |                 CR = (volatile unsigned long*)(&GPIO_B +offset);
+      |                                                ^~~~~~~
+gp_driver.c(22): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   22 |                 CR = (volatile unsigned long*)(&GPIO_C +offset);
+      |                                                ^~~~~~~
+gp_driver.c(36): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   36 |                 IDR = (volatile unsigned long*)(&GPIO_A + offset);
+      |                                                 ^~~~~~~
+gp_driver.c(39): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   39 |                 IDR = (volatile unsigned long*)(&GPIO_B + offset);
+      |                                                 ^~~~~~~
+gp_driver.c(42): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   42 |                 IDR = (volatile unsigned long*)(&GPIO_C + offset);
+      |                                                 ^~~~~~~
+gp_driver.c(52): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   52 |                 ODR = (volatile unsigned long *)(&GPIO_A +offset);
+      |                                                  ^~~~~~~
+gp_driver.c(55): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   55 |                 ODR = (volatile unsigned long *)(&GPIO_B +offset);
+      |                                                  ^~~~~~~
+gp_driver.c(58): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
+   58 |                 ODR = (volatile unsigned long *)(&GPIO_C +offset);
+      |                                                  ^~~~~~~
+16 warnings generated.
+compiling gp_driver.c...
+systick_time.c(2): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
       |                                                ^
@@ -37,114 +117,30 @@ C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\st
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    26 |   *           - Macros to access peripheral<92>s registers hardware
       |                                            ^
-main.c(11): warning: no previous extern declaration for non-static variable 'UART1_signal' [-Wmissing-variable-declarations]
-   11 | unsigned short UART1_signal = 0;
-      |                ^
-main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   11 | unsigned short UART1_signal = 0;
-      | ^
-main.c(12): warning: no previous extern declaration for non-static variable 'UART1_counter' [-Wmissing-variable-declarations]
-   12 | unsigned int UART1_counter = 0;
-      |              ^
-main.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   12 | unsigned int UART1_counter = 0;
-      | ^
-main.c(13): warning: no previous extern declaration for non-static variable 'UART1_bgd' [-Wmissing-variable-declarations]
-   13 | unsigned short UART1_bgd = 0;
-      |                ^
-main.c(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   13 | unsigned short UART1_bgd = 0;
-      | ^
-main.c(16): warning: no previous extern declaration for non-static variable 'UART2_signal' [-Wmissing-variable-declarations]
-   16 | unsigned short UART2_signal = 0;
-      |                ^
-main.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   16 | unsigned short UART2_signal = 0;
-      | ^
-main.c(17): warning: no previous extern declaration for non-static variable 'UART2_counter' [-Wmissing-variable-declarations]
-   17 | unsigned int UART2_counter = 0;
-      |              ^
-main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   17 | unsigned int UART2_counter = 0;
-      | ^
-main.c(18): warning: no previous extern declaration for non-static variable 'UART2_bgd' [-Wmissing-variable-declarations]
-   18 | unsigned short UART2_bgd = 0;
-      |                ^
-main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   18 | unsigned short UART2_bgd = 0;
-      | ^
-main.c(21): warning: no previous extern declaration for non-static variable 'UART3_signal' [-Wmissing-variable-declarations]
-   21 | unsigned short UART3_signal = 0;
-      |                ^
-main.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   21 | unsigned short UART3_signal = 0;
-      | ^
-main.c(22): warning: no previous extern declaration for non-static variable 'UART3_counter' [-Wmissing-variable-declarations]
-   22 | unsigned int UART3_counter = 0;
-      |              ^
-main.c(22): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   22 | unsigned int UART3_counter = 0;
-      | ^
-main.c(23): warning: no previous extern declaration for non-static variable 'UART3_bgd' [-Wmissing-variable-declarations]
-   23 | unsigned short UART3_bgd = 0;
-      |                ^
-main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   23 | unsigned short UART3_bgd = 0;
-      | ^
-main.c(53): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-   53 | void USART2_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
-      |                       ^
-      |                        void
-main.c(54): warning: incompatible pointer types passing 'unsigned int *' to parameter of type 'unsigned short *' [-Wincompatible-pointer-types]
-   54 |         UART_ISR(2,3,&UART2_signal,&UART2_counter,UART2_msg);
-      |                                    ^~~~~~~~~~~~~~
-./uart_driver.h(7): note: passing argument to parameter 'counter' here
-    7 | void UART_ISR(unsigned short uart, unsigned short bridge, unsigned short* signal, unsigned short* counter, char msg[]);
-      |                                                                                                   ^
-main.c(53): warning: no previous prototype for function 'USART2_IRQHandler' [-Wmissing-prototypes]
-   53 | void USART2_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
-      |      ^
-main.c(53): note: declare 'static' if the function is not intended to be used outside of this translation unit
-   53 | void USART2_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
-      | ^
-      | static 
-main.c(57): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-   57 | void USART3_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
-      |                       ^
-      |                        void
-main.c(58): warning: incompatible pointer types passing 'unsigned int *' to parameter of type 'unsigned short *' [-Wincompatible-pointer-types]
-   58 |         UART_ISR(3,2,&UART3_signal,&UART3_counter,UART3_msg);
-      |                                    ^~~~~~~~~~~~~~
-./uart_driver.h(7): note: passing argument to parameter 'counter' here
-    7 | void UART_ISR(unsigned short uart, unsigned short bridge, unsigned short* signal, unsigned short* counter, char msg[]);
-      |                                                                                                   ^
-main.c(57): warning: no previous prototype for function 'USART3_IRQHandler' [-Wmissing-prototypes]
-   57 | void USART3_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
-      |      ^
-main.c(57): note: declare 'static' if the function is not intended to be used outside of this translation unit
-   57 | void USART3_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
-      | ^
-      | static 
-main.c(10): warning: no previous extern declaration for non-static variable 'UART1_msg' [-Wmissing-variable-declarations]
-   10 | char UART1_msg[100];
-      |      ^
-main.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   10 | char UART1_msg[100];
-      | ^
-main.c(15): warning: no previous extern declaration for non-static variable 'UART2_msg' [-Wmissing-variable-declarations]
-   15 | char UART2_msg[100];
-      |      ^
-main.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   15 | char UART2_msg[100];
-      | ^
-main.c(20): warning: no previous extern declaration for non-static variable 'UART3_msg' [-Wmissing-variable-declarations]
-   20 | char UART3_msg[100];
-      |      ^
-main.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   20 | char UART3_msg[100];
-      | ^
-21 warnings generated.
-compiling main.c...
+3 warnings generated.
+compiling systick_time.c...
+assembling startup_stm32f10x_md.s...
+RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+      |             ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+      |     ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(408): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  408 |   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+      |         ^~~~~~~~~~~~~
+5 warnings generated.
+compiling system_stm32f10x.c...
 uart_driver.c(1): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -230,9 +226,127 @@ uart_driver.c(195): warning: unsafe buffer access [-Wunsafe-buffer-usage]
       |                 ^~~
 24 warnings generated.
 compiling uart_driver.c...
+main.c(6): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+main.c(16): warning: no previous extern declaration for non-static variable 'UART1_signal' [-Wmissing-variable-declarations]
+   16 | unsigned short UART1_signal = 0;
+      |                ^
+main.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   16 | unsigned short UART1_signal = 0;
+      | ^
+main.c(17): warning: no previous extern declaration for non-static variable 'UART1_counter' [-Wmissing-variable-declarations]
+   17 | unsigned int UART1_counter = 0;
+      |              ^
+main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   17 | unsigned int UART1_counter = 0;
+      | ^
+main.c(18): warning: no previous extern declaration for non-static variable 'UART1_bgd' [-Wmissing-variable-declarations]
+   18 | unsigned short UART1_bgd = 0;
+      |                ^
+main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   18 | unsigned short UART1_bgd = 0;
+      | ^
+main.c(21): warning: no previous extern declaration for non-static variable 'UART2_signal' [-Wmissing-variable-declarations]
+   21 | unsigned short UART2_signal = 0;
+      |                ^
+main.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   21 | unsigned short UART2_signal = 0;
+      | ^
+main.c(22): warning: no previous extern declaration for non-static variable 'UART2_counter' [-Wmissing-variable-declarations]
+   22 | unsigned int UART2_counter = 0;
+      |              ^
+main.c(22): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   22 | unsigned int UART2_counter = 0;
+      | ^
+main.c(23): warning: no previous extern declaration for non-static variable 'UART2_bgd' [-Wmissing-variable-declarations]
+   23 | unsigned short UART2_bgd = 0;
+      |                ^
+main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   23 | unsigned short UART2_bgd = 0;
+      | ^
+main.c(26): warning: no previous extern declaration for non-static variable 'UART3_signal' [-Wmissing-variable-declarations]
+   26 | unsigned short UART3_signal = 0;
+      |                ^
+main.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   26 | unsigned short UART3_signal = 0;
+      | ^
+main.c(27): warning: no previous extern declaration for non-static variable 'UART3_counter' [-Wmissing-variable-declarations]
+   27 | unsigned int UART3_counter = 0;
+      |              ^
+main.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   27 | unsigned int UART3_counter = 0;
+      | ^
+main.c(28): warning: no previous extern declaration for non-static variable 'UART3_bgd' [-Wmissing-variable-declarations]
+   28 | unsigned short UART3_bgd = 0;
+      |                ^
+main.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   28 | unsigned short UART3_bgd = 0;
+      | ^
+main.c(58): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   58 | void USART2_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
+      |                       ^
+      |                        void
+main.c(59): warning: incompatible pointer types passing 'unsigned int *' to parameter of type 'unsigned short *' [-Wincompatible-pointer-types]
+   59 |         UART_ISR(2,3,&UART2_signal,&UART2_counter,UART2_msg);
+      |                                    ^~~~~~~~~~~~~~
+./uart_driver.h(7): note: passing argument to parameter 'counter' here
+    7 | void UART_ISR(unsigned short uart, unsigned short bridge, unsigned short* signal, unsigned short* counter, char msg[]);
+      |                                                                                                   ^
+main.c(58): warning: no previous prototype for function 'USART2_IRQHandler' [-Wmissing-prototypes]
+   58 | void USART2_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
+      |      ^
+main.c(58): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   58 | void USART2_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
+      | ^
+      | static 
+main.c(62): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   62 | void USART3_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
+      |                       ^
+      |                        void
+main.c(63): warning: incompatible pointer types passing 'unsigned int *' to parameter of type 'unsigned short *' [-Wincompatible-pointer-types]
+   63 |         UART_ISR(3,2,&UART3_signal,&UART3_counter,UART3_msg);
+      |                                    ^~~~~~~~~~~~~~
+./uart_driver.h(7): note: passing argument to parameter 'counter' here
+    7 | void UART_ISR(unsigned short uart, unsigned short bridge, unsigned short* signal, unsigned short* counter, char msg[]);
+      |                                                                                                   ^
+main.c(62): warning: no previous prototype for function 'USART3_IRQHandler' [-Wmissing-prototypes]
+   62 | void USART3_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
+      |      ^
+main.c(62): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   62 | void USART3_IRQHandler(){// ham ngat tai USART2 khi tin hieu tai cac chan uart2(tx,rx)
+      | ^
+      | static 
+main.c(15): warning: no previous extern declaration for non-static variable 'UART1_msg' [-Wmissing-variable-declarations]
+   15 | char UART1_msg[100];
+      |      ^
+main.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   15 | char UART1_msg[100];
+      | ^
+main.c(20): warning: no previous extern declaration for non-static variable 'UART2_msg' [-Wmissing-variable-declarations]
+   20 | char UART2_msg[100];
+      |      ^
+main.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   20 | char UART2_msg[100];
+      | ^
+main.c(25): warning: no previous extern declaration for non-static variable 'UART3_msg' [-Wmissing-variable-declarations]
+   25 | char UART3_msg[100];
+      |      ^
+main.c(25): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   25 | char UART3_msg[100];
+      | ^
+21 warnings generated.
+compiling main.c...
 linking...
 Program Size: Code=5292 RO-data=252 RW-data=0 ZI-data=1848  
-".\Objects\033__STM32F1_USART_UART_INTERRUPT_STRATEGY_Advanced_Software_Interrupt_Techniques.axf" - 0 Error(s), 45 Warning(s).
+".\Objects\033__STM32F1_USART_UART_INTERRUPT_STRATEGY_Advanced_Software_Interrupt_Techniques.axf" - 0 Error(s), 69 Warning(s).
 
 <h2>Software Packages used:</h2>
 

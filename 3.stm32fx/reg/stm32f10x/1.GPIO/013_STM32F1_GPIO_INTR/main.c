@@ -29,6 +29,7 @@ int main(void){
 				GPIOC->ODR |= 0x200;
 			}
 	}
+	
 }
 
 void delay(void){
