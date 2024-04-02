@@ -68,7 +68,7 @@ void USART_init(unsigned short Usart_Channel,unsigned long Baundrate){
 	// enable Usart
 	
 	if(Usart_Channel == 1){
-		// configure Usart Pin: Tx and Rx
+		__disable_irq();
 		GPIOx_init(PA,9,OUT50,O_AF_PP);  	// Tx
 		GPIOx_init(PA,10,IN,I_PP);			 	// Rx
 		RCC->APB2ENR 	|= 0x4000;					// enable Usart clock
@@ -77,15 +77,23 @@ void USART_init(unsigned short Usart_Channel,unsigned long Baundrate){
 		USART1->CR1 	|= 0x8;							// Enable Transmit
 		USART1->CR1 	|= 0x4;							// Enable Receive
 		USART1->CR1 	|= 0x2000;					// Usart Enable
+		// enable interrupt transmit and receive
+		USART1->CR1 	|= 0x20;
+		NVIC_EnableIRQ(USART1_IRQn);
+		__enable_irq();
 	}
 	else if(Usart_Channel == 2){
-		GPIOx_init(PA,2,OUT50,O_AF_PP);
+		__disable_irq();
+		GPIOx_init(PA,2,OUT50,O_AF_PP); 	// Tx
 		GPIOx_init(PA,3,IN,I_PP);
 		RCC->APB1ENR 	|= 0x20000;
 		USART2->BRR 	 = BRR_Cal;
 		USART2->CR1 	|= 0x8;
 		USART2->CR1 	|= 0x4;
 		USART2->CR1 	|= 0x2000;
+		USART2->CR1 	|= 0x20;
+		NVIC_EnableIRQ(USART2_IRQn);
+		__enable_irq();
 	}
 	else if(Usart_Channel == 3){
 		GPIOx_init(PB,10,OUT50,O_AF_PP);
@@ -95,6 +103,9 @@ void USART_init(unsigned short Usart_Channel,unsigned long Baundrate){
 		USART3->CR1 	|= 0x8;
 		USART3->CR1 	|= 0x4;
 		USART3->CR1 	|= 0x2000;
+		USART3->CR1 	|= 0x20;
+		NVIC_EnableIRQ(USART3_IRQn);
+		__enable_irq();
 	}
 }
 
@@ -139,55 +150,6 @@ void USART_Send(unsigned short Usart_Channel, char *msg){
 	while(*(msg+i) != '\0'){
 		USART_Tx(Usart_Channel,*(msg+i));
 		i++;
-	}
-}
-
-// = USART_int + interrupt setup
-void USART_ISR_init(unsigned short Usart_Channel,unsigned long Baundrate){
-	
-	RCC->APB2ENR |= 1;
-	
-	unsigned short BRR_Cal = USART_BRR(Usart_Channel, Baundrate);
-	
-	if(Usart_Channel == 1){
-		__disable_irq();
-		GPIOx_init(PA,9,OUT50,O_AF_PP);  	// Tx
-		GPIOx_init(PA,10,IN,I_PP);			 	// Rx
-		RCC->APB2ENR 	|= 0x4000;					// enable Usart clock
-		USART1->BRR 	 = BRR_Cal;					// setup Baundrate speed
-		// enable Transmit and Receive
-		USART1->CR1 	|= 0x8;							// Enable Transmit
-		USART1->CR1 	|= 0x4;							// Enable Receive
-		USART1->CR1 	|= 0x2000;					// Usart Enable
-		// enable interrupt transmit and receive
-		USART1->CR1 	|= 0x20;
-		NVIC_EnableIRQ(USART1_IRQn);
-		__enable_irq();
-	}
-	else if(Usart_Channel == 2){
-		__disable_irq();
-		GPIOx_init(PA,2,OUT50,O_AF_PP);
-		GPIOx_init(PA,3,IN,I_PP);
-		RCC->APB1ENR 	|= 0x20000;
-		USART2->BRR 	 = BRR_Cal;
-		USART2->CR1 	|= 0x8;
-		USART2->CR1 	|= 0x4;
-		USART2->CR1 	|= 0x2000;
-		USART2->CR1 	|= 0x20;
-		NVIC_EnableIRQ(USART2_IRQn);
-		__enable_irq();
-	}
-	else if(Usart_Channel == 3){
-		GPIOx_init(PB,10,OUT50,O_AF_PP);
-		GPIOx_init(PB,11,IN,I_PP);
-		RCC->APB2ENR 	|= 0x40000;
-		USART3->BRR 	 = BRR_Cal;
-		USART3->CR1 	|= 0x8;
-		USART3->CR1 	|= 0x4;
-		USART3->CR1 	|= 0x2000;
-		USART3->CR1 	|= 0x20;
-		NVIC_EnableIRQ(USART3_IRQn);
-		__enable_irq();
 	}
 }
 

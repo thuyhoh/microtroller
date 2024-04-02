@@ -4,7 +4,16 @@
 #include "SPI_drive.h"
 #include "nokia5110lcd.h"
 
-
+/*	nokia 5110 lcd pin
+	1 RST reset pin  	-> PA0
+	2 CE 	chip set   	-> PA4
+	3 DC 	data/comand	-> PA1
+	4 DIN	data in			-> PA7 MOSI
+	5 CLK clock				-> PA5 SCLK
+	6 VCC							
+	7 BL blik pin			-> PA2
+	8 GND
+*/
 
 void n5110_init(unsigned short Spi_Channel){
 	systick_init();
@@ -60,6 +69,9 @@ void n5110(n5110_t n5110_mgr){
 }
 */
 void n5110_print(unsigned short Spi_Channel,short Ypos, short Xpos, char str[]){
+	// clear display
+	n5110_pos(Spi_Channel,0,0);
+	n5110_clear(Spi_Channel);
 	// write string into n5110
 	n5110_pos(Spi_Channel,Xpos,Ypos);
 	int i,j;
@@ -72,23 +84,102 @@ void n5110_print(unsigned short Spi_Channel,short Ypos, short Xpos, char str[]){
 		i++;
 	}
 	GPIOx_W(PA,1,LOW);
-	// string positon
+	
 	
 	// clear the string
 }
 
+// string positon
 void n5110_pos(unsigned short Spi_Channel,short Xpos, short Ypos){
 	GPIOx_W(PA,1,LOW);
 	SPI_Tx(Spi_Channel,0x20);	// -> funtion set: basic set
-	SPI_Tx(Spi_Channel,(char)(0x40 | Ypos)); // -> display normal mode 
-	SPI_Tx(Spi_Channel,(char)(0x80 | Xpos));
+	SPI_Tx(Spi_Channel,(char)(0x40 | Ypos)); // -> set vi tri cua thong tin o hang Ypos
+	SPI_Tx(Spi_Channel,(char)(0x80 | Xpos)); // -> set vi tri cua thong tin o hang Xpos
 	GPIOx_W(PA,1,HIGH);
 }
 
+
+// n5110_clear: clear display
 void n5110_clear(unsigned short Spi_Channel){
 	GPIOx_W(PA,1,HIGH);
-	int j;
-	for(j = 0; j< 504;j++){
+	int i;
+	for(i = 0; i< 504;i++){
 		SPI_Tx(Spi_Channel,0x00);
+	}
+}
+
+
+
+// clear buffer
+void clear_buffer(unsigned char scream_buffer[][84]){
+	int i , j;
+	for(i = 0; i < 6;i++){
+		for(j = 0; j< 84;j++){
+			scream_buffer[i][j] = 0;
+		}
+	}
+}
+
+//
+void print_buffer(unsigned char scream_buffer[][84]){
+	n5110_clear(1);
+	n5110_pos(1,0,0);
+	int i,j;
+	GPIOx_W(PA,1,HIGH);// data and command
+	for(i = 0; i < 6;i++){
+		for(j = 0; j< 84; j++){
+			SPI_Tx(1,scream_buffer[i][j]);
+		}
+	}
+	GPIOx_W(PA,1,LOW);
+}
+
+// update buffer
+void update_buffer(ImgType img, unsigned short img_nums, unsigned char scream_buffer[][84]){
+	int x_cnt, y_cnt, endx, endy,cnt;
+	// endx
+	if((img.W + img.X_pos) > 84){
+		endx = 83;
+	}else{
+		endx = img.W + img.X_pos - 1;
+	}
+	// endy
+	if((img.H + img.Y_pos) > 5){
+		endy = 5;
+	}else{
+		endy = img.H + img.Y_pos - 1;
+	}
+	//
+	cnt = 0;
+	for(y_cnt = img.Y_pos; y_cnt <= endy; y_cnt++){
+		for(x_cnt = img.X_pos; x_cnt <= endx; x_cnt++){
+			cnt = (y_cnt - img.Y_pos)*img.W + (x_cnt - img.X_pos); // phan tu thu bao nhieu cua mang
+			scream_buffer[y_cnt][x_cnt] = img.image[img_nums][cnt];// img thu may trong struct;
+			
+		}			
+	}
+}
+
+// chen them srting bao trong buffer
+void update_str_buffer(short Ypos, short Xpos, char str[], unsigned char screen_buffer[][84]){
+	int i,j, cnt_col, cnt_row;
+	cnt_col = Xpos;
+	cnt_row = Ypos;
+	i = 0;
+	while(str[i]){
+		if(cnt_row > 5) break;
+		for(j = 0; j< 5;j++){
+			screen_buffer[cnt_row][cnt_col] = charset[str[i] - 32][j];
+			if(cnt_col + 1> 83){
+				if((cnt_row + 1)>5) break;
+				else{
+					cnt_row++;
+					cnt_col = Xpos;
+				}
+			}else{
+				cnt_col++;
+			}
+		}
+		i++;
 	}
 }

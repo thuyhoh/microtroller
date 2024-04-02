@@ -51,42 +51,51 @@
 
 */
 
-void Systick_init(void){
-	// reset regsistot value
+#include "stm32f10x.h" 
+#include "systick_time.h"
+
+void SysTick_init(void)
+{
 	SysTick->CTRL = 0;
-	SysTick->LOAD = 0x00ffffff;
+	SysTick->LOAD = 0x00FFFFFF;
 	SysTick->VAL = 0;
-	
-	// enable counter
 	SysTick->CTRL |= 5;
 }
 
-void DelayMilis(void){
-	SysTick->LOAD = 0x1A5E0; // 0x1A5E0: so xung duoc tao ra trong 1ms 108Mhz
+void SysTick_ISR(void){
+	// reset reg
+	SysTick->CTRL = 0; 
+	SysTick->LOAD = 0;
+	// setup ISR_int
+	__disable_irq();
+	SysTick->LOAD = 72000;
 	SysTick->VAL = 0;
-	
-	while((SysTick->CTRL & 0x00010000) == 0); // cho den khi bit COUNTFLAG(bit 16) duoc bat len 
-
-}
-
-void Delayms(unsigned long t){
-	for(; t > 0; t--){
-		DelayMilis();
-	}
-}
-
-void systick_int_start(void){
-	// tat toan bo ngat tren ngoai vi
-	__disable_irq(); 
-	SysTick->CTRL = 0;
-	SysTick->LOAD = 72000 - 1;
-	SysTick->VAL = 0;
-	// set TICKINT = 1; enable interrupt
 	SysTick->CTRL |= 7;
-	// cho phep ngat hoat dong
+	/*
+		SysTick->CTRL |= 1;
+		SysTick->CTRL |= 1 << 2;
+		SysTick->CTRL |= 1 << 3;
+	*/
 	__enable_irq();
-	
 }
+
+void DelayMillis(void)
+{
+	SysTick->LOAD = 0x11940;
+	SysTick->VAL = 0;
+	while((SysTick->CTRL & 0x00010000) == 0);
+}
+
+void DelayMs(unsigned long t)
+{
+	for(;t>0;t--)
+		{
+			DelayMillis();
+		}
+}
+
+
+
 
 void systick_int(unsigned short uart_1_mgr[], unsigned short uart_2_mgr[], unsigned short uart_3_mgr[]){
 	if(uart_1_mgr[0] != 0){

@@ -27,6 +27,36 @@ Project File Date:  03/02/2024
 <h2>Output:</h2>
 *** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
+systick_drive.c(1): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+3 warnings generated.
+compiling systick_drive.c...
+main.c(5): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+main.c(11): warning: no previous extern declaration for non-static variable 'n5110_buffer' [-Wmissing-variable-declarations]
+   11 | unsigned char n5110_buffer[6][84];
+      |               ^
+main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   11 | unsigned char n5110_buffer[6][84];
+      | ^
+4 warnings generated.
+compiling main.c...
 SPI_drive.c(1): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -51,64 +81,6 @@ SPI_drive.c(86): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
       |                                      ^~~
 7 warnings generated.
 compiling SPI_drive.c...
-main.c(5): warning: In file included from...
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-      |                                                ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   19 |   *                code will be based on direct access to peripheral<92>s registers 
-      |                                                                     ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   26 |   *           - Macros to access peripheral<92>s registers hardware
-      |                                            ^
-3 warnings generated.
-compiling main.c...
-systick_drive.c(1): warning: In file included from...
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-      |                                                ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   19 |   *                code will be based on direct access to peripheral<92>s registers 
-      |                                                                     ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   26 |   *           - Macros to access peripheral<92>s registers hardware
-      |                                            ^
-3 warnings generated.
-compiling systick_drive.c...
-assembling startup_stm32f10x_md.s...
-nokia5110lcd.c(1): warning: In file included from...
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-      |                                                ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   19 |   *                code will be based on direct access to peripheral<92>s registers 
-      |                                                                     ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   26 |   *           - Macros to access peripheral<92>s registers hardware
-      |                                            ^
-nokia5110lcd.c(35): warning: unused parameter 'Ypos' [-Wunused-parameter]
-   35 | void n5110_print(unsigned short Spi_Channel,short Ypos, short Xpos, char str[]){
-      |                                                   ^
-nokia5110lcd.c(35): warning: unused parameter 'Xpos' [-Wunused-parameter]
-   35 | void n5110_print(unsigned short Spi_Channel,short Ypos, short Xpos, char str[]){
-      |                                                               ^
-nokia5110lcd.c(62): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-   62 |         int j;
-      |             ^
-nokia5110lcd.c(40): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   40 |         while(str[i]){
-      |               ^~~
-nokia5110lcd.c(42): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   42 |                         SPI_Tx(Spi_Channel,charset[(int)(str[i]-32)][j]);
-      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~
-nokia5110lcd.c(42): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   42 |                         SPI_Tx(Spi_Channel,charset[(int)(str[i]-32)][j]);
-      |                                            ^~~~~~~
-nokia5110lcd.c(42): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   42 |                         SPI_Tx(Spi_Channel,charset[(int)(str[i]-32)][j]);
-      |                                                          ^~~
-10 warnings generated.
-compiling nokia5110lcd.c...
 RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -130,6 +102,82 @@ RTE/Device/STM32F103C8/system_stm32f10x.c(408): warning: unsafe buffer access [-
       |         ^~~~~~~~~~~~~
 5 warnings generated.
 compiling system_stm32f10x.c...
+nokia5110lcd.c(1): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+nokia5110lcd.c(77): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+   77 |         int i,j;
+      |             ^
+nokia5110lcd.c(105): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  105 |         int i;
+      |             ^
+nokia5110lcd.c(127): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+  127 |         int i,j;
+      |             ^
+nokia5110lcd.c(80): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   80 |         while(str[i]){
+      |               ^~~
+nokia5110lcd.c(82): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   82 |                         SPI_Tx(Spi_Channel,charset[(int)(str[i]-32)][j]);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~
+nokia5110lcd.c(82): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   82 |                         SPI_Tx(Spi_Channel,charset[(int)(str[i]-32)][j]);
+      |                                            ^~~~~~~
+nokia5110lcd.c(82): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   82 |                         SPI_Tx(Spi_Channel,charset[(int)(str[i]-32)][j]);
+      |                                                          ^~~
+nokia5110lcd.c(118): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  118 |                         scream_buffer[i][j] = 0;
+      |                         ^~~~~~~~~~~~~~~~
+nokia5110lcd.c(118): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  118 |                         scream_buffer[i][j] = 0;
+      |                         ^~~~~~~~~~~~~
+nokia5110lcd.c(131): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  131 |                         SPI_Tx(1,scream_buffer[i][j]);
+      |                                  ^~~~~~~~~~~~~~~~
+nokia5110lcd.c(131): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  131 |                         SPI_Tx(1,scream_buffer[i][j]);
+      |                                  ^~~~~~~~~~~~~
+nokia5110lcd.c(157): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  157 |                         scream_buffer[y_cnt][x_cnt] = img.image[img_nums][cnt];// img thu may trong struct;
+      |                         ^~~~~~~~~~~~~~~~~~~~
+nokia5110lcd.c(157): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  157 |                         scream_buffer[y_cnt][x_cnt] = img.image[img_nums][cnt];// img thu may trong struct;
+      |                         ^~~~~~~~~~~~~
+nokia5110lcd.c(157): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  157 |                         scream_buffer[y_cnt][x_cnt] = img.image[img_nums][cnt];// img thu may trong struct;
+      |                                                       ^~~~~~~~~~~~~~~~~~~
+nokia5110lcd.c(157): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  157 |                         scream_buffer[y_cnt][x_cnt] = img.image[img_nums][cnt];// img thu may trong struct;
+      |                                                       ^~~~~~~~~
+nokia5110lcd.c(169): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  169 |         while(str[i]){
+      |               ^~~
+nokia5110lcd.c(172): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  172 |                         screen_buffer[cnt_row][cnt_col] = charset[str[i] - 32][j];
+      |                         ^~~~~~~~~~~~~~~~~~~~~~
+nokia5110lcd.c(172): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  172 |                         screen_buffer[cnt_row][cnt_col] = charset[str[i] - 32][j];
+      |                         ^~~~~~~~~~~~~
+nokia5110lcd.c(172): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  172 |                         screen_buffer[cnt_row][cnt_col] = charset[str[i] - 32][j];
+      |                                                           ^~~~~~~~~~~~~~~~~~~~
+nokia5110lcd.c(172): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  172 |                         screen_buffer[cnt_row][cnt_col] = charset[str[i] - 32][j];
+      |                                                           ^~~~~~~
+nokia5110lcd.c(172): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  172 |                         screen_buffer[cnt_row][cnt_col] = charset[str[i] - 32][j];
+      |                                                                   ^~~
+24 warnings generated.
+compiling nokia5110lcd.c...
+assembling startup_stm32f10x_md.s...
 gpio_drive.c(10): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -158,8 +206,8 @@ C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\st
 7 warnings generated.
 compiling gpio_drive.c...
 linking...
-Program Size: Code=2376 RO-data=252 RW-data=0 ZI-data=1632  
-".\Objects\042__STM32F1_SPI_COMMUNICATION_EXAMPLE_NOKIA_5110_LCD_(PCD8544)_SETUP&PRINT_EXAMPLE.axf" - 0 Error(s), 35 Warning(s).
+Program Size: Code=1376 RO-data=252 RW-data=0 ZI-data=1632  
+".\Objects\042__STM32F1_SPI_COMMUNICATION_EXAMPLE_NOKIA_5110_LCD_(PCD8544)_SETUP&PRINT_EXAMPLE.axf" - 0 Error(s), 50 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -187,9 +235,9 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup@1.0.0
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
-      Source file:   Device/Source/system_stm32f10x.c
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/system_stm32f10x.c
 Build Time Elapsed:  00:00:00
 </pre>
 </body>

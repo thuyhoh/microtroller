@@ -1,15 +1,6 @@
 #include "stdint.h"
 
-/*	nokia 5110 lcd pin
-	1 RST reset pin  	-> PA0
-	2 CE 	chip set   	-> PA4
-	3 DC 	data/comand	-> PA1
-	4 DIN	data in			-> PA7 MOSI
-	5 CLK clock				-> PA5 SCLK
-	6 VCC							
-	7 BL blik pin			-> PA2
-	8 GND
-*/
+
 typedef struct pin{
 	short 	Port;
 	short		Pin;
@@ -25,7 +16,13 @@ typedef struct n5110_Connect_Pin{
 	int 			Ypoa;
 }n5110_t;
 
- 
+typedef struct State{
+	unsigned short H;
+	unsigned short W;
+	const unsigned char* image[10];
+	unsigned short X_pos;
+	unsigned short Y_pos;
+}ImgType; 
 
 // The 7-bit ASCII character set...
 static const unsigned char charset[][5] = {
@@ -132,4 +129,8 @@ void n5110_print(unsigned short Spi_Channel,short Ypos, short Xpos, char str[]);
 void n5110_pos(unsigned short Spi_Channel,short Xpos, short Ypos);
 void n5110_clear(unsigned short Spi_Channel);
 
+void clear_buffer(unsigned char scream_buffer[][84]);
+void print_buffer(unsigned char scream_buffer[][84]);
+void update_buffer(ImgType img, unsigned short img_nums, unsigned char scream_buffer[][84]);
+void update_str_buffer(short Ypos, short Xpos, char str[], unsigned char screen_buffer[][84]);
 

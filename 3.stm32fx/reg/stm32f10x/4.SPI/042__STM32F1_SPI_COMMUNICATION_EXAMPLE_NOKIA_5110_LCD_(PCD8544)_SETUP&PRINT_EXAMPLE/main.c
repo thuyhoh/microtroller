@@ -8,9 +8,13 @@ doc: PCD8544.PDF
 #include "systick_drive.h"
 #include "nokia5110lcd.h"
 
+unsigned char n5110_buffer[6][84];
+
 int main(void){
-	n5110_init(1);
+	// n5110_init(1);
 	systick_init();
+	
+	
 	while(1){
 		GPIOx_W(PA,1,HIGH);
 		SPI_Tx(1,0x1F);
