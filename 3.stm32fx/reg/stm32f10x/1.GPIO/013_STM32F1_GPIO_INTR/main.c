@@ -8,17 +8,13 @@ int main(void){
 	
 	init_gp(PA,0,IN,I_PP);
 	init_gp(PC,13,OUT50,O_GP_PP);
-	
+	init_gp(PB,2,OUT50,O_GP_PP);
 	//int i = 0;
-	__disable_irq(); // vo hieu hoa toan bo ngat trong he thong
-	AFIO->EXTICR[0] = 0x00; // kich hoat ngat EXTI0
-	EXTI->IMR |= 1; // thanh ghi cho phep bat ngat ngoai vi rieng le: bit0->9: xac dinh muc do uu tien cua cac ngat ngoai vi
-	EXTI->RTSR |= 1; // bat ngat canh len (low -> high)
-	NVIC_EnableIRQ(EXTI0_IRQn); // Kích hoat ngat EXTI0 trong bo dieu khien ngat (NVIC)
-	__enable_irq(); // cho phep toan bo ngat duoc thuc hien
+	
 	
 	while(1){
-			W_GP(PA,12,signal);
+		/*
+		W_GP(PB,2,signal);
 			if(signal){
 				delay();
 				W_GP(PC,13,HIGH);
@@ -28,6 +24,14 @@ int main(void){
 			else{
 				GPIOC->ODR |= 0x200;
 			}
+			
+		*/
+		delay();
+		W_GP(PB,2,HIGH);
+		W_GP(PC,13,HIGH);		
+		delay();
+		W_GP(PB,2,LOW);
+		W_GP(PC,13,LOW);	
 	}
 	
 }

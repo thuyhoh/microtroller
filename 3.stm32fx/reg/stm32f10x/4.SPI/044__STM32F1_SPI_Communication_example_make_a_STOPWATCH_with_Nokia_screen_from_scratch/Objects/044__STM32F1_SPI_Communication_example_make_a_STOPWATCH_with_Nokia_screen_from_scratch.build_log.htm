@@ -17,18 +17,17 @@ Library Manager: ArmAr.exe V6.21
 Hex Converter:   FromElf.exe V6.21
 CPU DLL:         SARMCM3.DLL V5.39.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      UL2CM3.DLL V1.164.9.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 E:\2.Embedded\microtroller\3.stm32fx\reg\stm32f10x\4.SPI\044__STM32F1_SPI_Communication_example_make_a_STOPWATCH_with_Nokia_screen_from_scratch\044__STM32F1_SPI_Communication_example_make_a_STOPWATCH_with_Nokia_screen_from_scratch.uvprojx
-Project File Date:  03/05/2024
+Project File Date:  05/10/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
+main.c(5): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
       |                                                ^
@@ -38,76 +37,37 @@ C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\st
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    26 |   *           - Macros to access peripheral<92>s registers hardware
       |                                            ^
-RTE/Device/STM32F103C8/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
-  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
-      |             ^
-RTE/Device/STM32F103C8/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+main.c(9): warning: In file included from...
+./stopwatch.h(12): warning: no newline at end of file [-Wnewline-eof]
+   12 |         
+      |         ^
+main.c(34): error: incompatible pointer to integer conversion passing 'ADC_TypeDef *' to parameter of type 'char' [-Wint-conversion]
+   34 |                 if(adc_check(ADC1,PA,0))
+      |                              ^~~~
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(1423): note: expanded from macro 'ADC1'
+ 1423 | #define ADC1                ((ADC_TypeDef *) ADC1_BASE)
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+./adc_drive.h(9): note: passing argument to parameter 'adc' here
+    9 | char adc_check(char adc, short port, short pin);
+      |                     ^
+main.c(36): error: incompatible pointer to integer conversion passing 'ADC_TypeDef *' to parameter of type 'char' [-Wint-conversion]
+   36 |                                 adc_val = adc_rx(ADC1,PA,0);
+      |                                                  ^~~~
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(1423): note: expanded from macro 'ADC1'
+ 1423 | #define ADC1                ((ADC_TypeDef *) ADC1_BASE)
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+./adc_drive.h(10): note: passing argument to parameter 'adc' here
+   10 | int adc_rx(char adc, short port, short pin);
+      |                 ^
+main.c(27): warning: no previous extern declaration for non-static variable 'adc_val' [-Wmissing-variable-declarations]
+   27 | int adc_val;
       |     ^
-RTE/Device/STM32F103C8/system_stm32f10x.c(408): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-  408 |   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
-      |         ^~~~~~~~~~~~~
-5 warnings generated.
-compiling system_stm32f10x.c...
-help_func.c(70): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
-   70 |                 lstr[cnt] = num % div + 0x30;
-      |                           ~ ~~~~~~~~~~^~~~~~
-help_func.c(74): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
-   74 |         lstr[cnt] = num +0x30;
-      |                   ~ ~~~~^~~~~
-help_func.c(8): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-    8 |         while(str[++len] != '\0');
-      |               ^~~
-help_func.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   23 |         while((str2[i+strlen - 1] != '\0' | str2[i+strlen]!= '\0') & (match == 0)){
-      |                ^~~~
-help_func.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   23 |         while((str2[i+strlen - 1] != '\0' | str2[i+strlen]!= '\0') & (match == 0)){
-      |                                             ^~~~
-help_func.c(25): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   25 |                         if(str1[j] == str2[i+j]){
-      |                            ^~~~
-help_func.c(25): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   25 |                         if(str1[j] == str2[i+j]){
-      |                                       ^~~~
-help_func.c(53): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   53 |         while(str2[i] != '\0'){
-      |               ^~~~
-help_func.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   56 |         while(str1[j] != '\0'){
-      |               ^~~~
-help_func.c(57): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   57 |                 str1[i+j] = str2[j];
-      |                 ^~~~
-help_func.c(57): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   57 |                 str1[i+j] = str2[j];
-      |                             ^~~~
-help_func.c(70): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   70 |                 lstr[cnt] = num % div + 0x30;
-      |                 ^~~~
-help_func.c(74): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   74 |         lstr[cnt] = num +0x30;
-      |         ^~~~
-help_func.c(76): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   76 |                 str[cnt -j] = lstr[j];
-      |                 ^~~
-help_func.c(76): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   76 |                 str[cnt -j] = lstr[j];
-      |                               ^~~~
-help_func.c(88): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   88 |                 check[0] = str[i];
-      |                            ^~~
-help_func.c(96): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   96 |                         result = result*10+ (str[i] - 0x30);
-      |                                              ^~~
-help_func.c(107): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-  107 |         while(str[i] != '\n'){
-      |               ^~~
-help_func.c(108): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-  108 |                 str[i] = '\0';
-      |                 ^~~
-19 warnings generated.
-compiling help_func.c...
+main.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+   27 | int adc_val;
+      | ^
+5 warnings and 2 errors generated.
+compiling main.c...
+assembling startup_stm32f10x_md.s...
 stopwatch.c(1): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -172,7 +132,8 @@ stopwatch.c(74): warning: implicit conversion changes signedness: 'unsigned int'
       |         ~~~~~~~~~~~~ ^~~~~~~~
 6 warnings and 3 errors generated.
 compiling stopwatch.c...
-main.c(5): warning: In file included from...
+adc_drive.c(1): warning: In file included from...
+./adc_drive.h(2): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
       |                                                ^
@@ -182,182 +143,97 @@ C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\st
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    26 |   *           - Macros to access peripheral<92>s registers hardware
       |                                            ^
-main.c(10): warning: In file included from...
-./stopwatch.h(5): warning: In file included from...
-./nokia5110lcd.h(7): error: redefinition of 'SPI_state'
-    7 | typedef struct SPI_state{
-      |                ^
-main.c(9): note: './nokia5110lcd.h' included multiple times, additional include site here
-    9 | #include "nokia5110lcd.h"
-      |          ^
-./stopwatch.h(5): note: './nokia5110lcd.h' included multiple times, additional include site here
-    5 | #include "nokia5110lcd.h"
-      |          ^
-./nokia5110lcd.h(7): note: unguarded header; consider using #ifdef guards or #pragma once
-    7 | typedef struct SPI_state{
-      |                ^
-main.c(10): warning: In file included from...
-./stopwatch.h(5): warning: In file included from...
-./nokia5110lcd.h(13): error: typedef redefinition with different types ('struct (unnamed struct at ./nokia5110lcd.h:7:16)' vs 'struct SPI_state')
-   13 | }ImgType; 
-      |  ^
-main.c(9): note: './nokia5110lcd.h' included multiple times, additional include site here
-    9 | #include "nokia5110lcd.h"
-      |          ^
-./stopwatch.h(5): note: './nokia5110lcd.h' included multiple times, additional include site here
-    5 | #include "nokia5110lcd.h"
-      |          ^
-./nokia5110lcd.h(13): note: unguarded header; consider using #ifdef guards or #pragma once
-   13 | }ImgType; 
-      |  ^
-main.c(10): warning: In file included from...
-./stopwatch.h(5): warning: In file included from...
-./nokia5110lcd.h(18): error: redefinition of 'charset'
-   18 | static const unsigned char charset[][5] = {
+adc_drive.c(38): warning: implicit conversion loses integer precision: 'short' to 'char' [-Wimplicit-int-conversion]
+   38 |                         channel = pin;
+      |                                 ~ ^~~
+adc_drive.c(46): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+   46 |                 channel = 8 + pin;
+      |                         ~ ~~^~~~~
+adc_drive.c(54): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+   54 |                 channel = 10 + pin;
+      |                         ~ ~~~^~~~~
+adc_drive.c(59): error: call to undeclared function 'init_GP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   59 |                 init_GP(port,pin,IN,I_AN);
+      |                 ^
+adc_drive.c(85): warning: unused parameter 'port' [-Wunused-parameter]
+   85 | char adc_check(char adc, short port, short pin)
+      |                                ^
+adc_drive.c(85): warning: unused parameter 'pin' [-Wunused-parameter]
+   85 | char adc_check(char adc, short port, short pin)
+      |                                            ^
+adc_drive.c(114): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+  114 |                 data = ADC1->DR;
+      |                      ~ ~~~~~~^~
+adc_drive.c(118): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+  118 |                 data = ADC2->DR;
+      |                      ~ ~~~~~~^~
+adc_drive.c(108): warning: unused parameter 'port' [-Wunused-parameter]
+  108 | int adc_rx(char adc, short port, short pin)
       |                            ^
-main.c(9): note: './nokia5110lcd.h' included multiple times, additional include site here
-    9 | #include "nokia5110lcd.h"
-      |          ^
-./stopwatch.h(5): note: './nokia5110lcd.h' included multiple times, additional include site here
-    5 | #include "nokia5110lcd.h"
-      |          ^
-./nokia5110lcd.h(18): note: unguarded header; consider using #ifdef guards or #pragma once
-   18 | static const unsigned char charset[][5] = {
-      |                            ^
-main.c(10): warning: In file included from...
-./stopwatch.h(12): warning: no newline at end of file [-Wnewline-eof]
-   12 |         
-      |         ^
-main.c(28): error: redefinition of 'sw_start' as different kind of symbol
-   28 | unsigned short sw_start = 0;
-      |                ^
-./stopwatch.h(11): note: previous definition is here
-   11 | void sw_start(unsigned long *millis, unsigned int *counter, char *number, char *time);
-      |      ^
-main.c(29): warning: no previous extern declaration for non-static variable 'sw_rst' [-Wmissing-variable-declarations]
-   29 | unsigned short sw_rst = 1;
-      |                ^
-main.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   29 | unsigned short sw_rst = 1;
-      | ^
-main.c(30): warning: no previous extern declaration for non-static variable 'counter' [-Wmissing-variable-declarations]
-   30 | unsigned int counter = 0;
-      |              ^
-main.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   30 | unsigned int counter = 0;
-      | ^
-main.c(31): warning: no previous extern declaration for non-static variable 'millis' [-Wmissing-variable-declarations]
-   31 | unsigned long millis = 0;
-      |               ^
-main.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   31 | unsigned long millis = 0;
-      | ^
-main.c(34): warning: no previous extern declaration for non-static variable 'digit' [-Wmissing-variable-declarations]
-   34 | unsigned short digit =0;
-      |                ^
-main.c(34): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   34 | unsigned short digit =0;
-      | ^
-main.c(48): warning: comparison of function 'sw_start' equal to a null pointer is always false [-Wtautological-pointer-compare]
-   48 |                 else if((sw_start == 0)&& (counter != 0)){
-      |                          ^~~~~~~~    ~
-main.c(48): note: prefix with the address-of operator to silence this warning
-   48 |                 else if((sw_start == 0)&& (counter != 0)){
-      |                          ^
-      |                          &
-main.c(50): warning: comparison between pointer and integer ('void (*)(unsigned long *, unsigned int *, char *, char *)' and 'int') [-Wpointer-integer-compare]
-   50 |                 }else if((sw_start == 1)&& (counter != 0)){
-      |                           ~~~~~~~~ ^  ~
-main.c(62): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-   62 | void EXTI0_IRQHandler(){
-      |                      ^
-      |                       void
-main.c(62): warning: no previous prototype for function 'EXTI0_IRQHandler' [-Wmissing-prototypes]
-   62 | void EXTI0_IRQHandler(){
-      |      ^
-main.c(62): note: declare 'static' if the function is not intended to be used outside of this translation unit
-   62 | void EXTI0_IRQHandler(){
-      | ^
-      | static 
-main.c(67): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-   67 | void EXTI1_IRQHandler(){
-      |                      ^
-      |                       void
-main.c(69): warning: address of function 'sw_start' will always evaluate to 'true' [-Wpointer-bool-conversion]
-   69 |         if(sw_start){
-      |         ~~ ^~~~~~~~
-main.c(69): note: prefix with the address-of operator to silence this warning
-   69 |         if(sw_start){
-      |            ^
-      |            &
-main.c(70): error: non-object type 'void (unsigned long *, unsigned int *, char *, char *)' is not assignable
-   70 |                 sw_start = 0;
-      |                 ~~~~~~~~ ^
-main.c(72): error: non-object type 'void (unsigned long *, unsigned int *, char *, char *)' is not assignable
-   72 |                 sw_start = 1;
-      |                 ~~~~~~~~ ^
-main.c(67): warning: no previous prototype for function 'EXTI1_IRQHandler' [-Wmissing-prototypes]
-   67 | void EXTI1_IRQHandler(){
-      |      ^
-main.c(67): note: declare 'static' if the function is not intended to be used outside of this translation unit
-   67 | void EXTI1_IRQHandler(){
-      | ^
-      | static 
-main.c(77): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-   77 | void SysTick_Handler(){
-      |                     ^
-      |                      void
-main.c(77): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
-   77 | void SysTick_Handler(){
-      |      ^
-main.c(77): note: declare 'static' if the function is not intended to be used outside of this translation unit
-   77 | void SysTick_Handler(){
-      | ^
-      | static 
-main.c(35): warning: no previous extern declaration for non-static variable 'number' [-Wmissing-variable-declarations]
-   35 | char number[3];
-      |      ^
-main.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   35 | char number[3];
-      | ^
-main.c(36): warning: no previous extern declaration for non-static variable 'time' [-Wmissing-variable-declarations]
-   36 | char time[7];   
-      |      ^
-main.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   36 | char time[7];   
-      | ^
-19 warnings and 6 errors generated.
-compiling main.c...
-systick_drive.c(1): warning: In file included from...
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-      |                                                ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   19 |   *                code will be based on direct access to peripheral<92>s registers 
-      |                                                                     ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   26 |   *           - Macros to access peripheral<92>s registers hardware
-      |                                            ^
-3 warnings generated.
-compiling systick_drive.c...
-gpio_drive.c(10): warning: In file included from...
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-      |                                                ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   19 |   *                code will be based on direct access to peripheral<92>s registers 
-      |                                                                     ^
-C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   26 |   *           - Macros to access peripheral<92>s registers hardware
-      |                                            ^
-gpio_drive.c(95): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-   95 |                 EXTI->IMR(Interrupt mask register): Kiem soat viec cho ph<E9>p hoac ngan chan tung duong ngat ngoai tao ra mot yeu cau ngat cho CPU
-      |                                                                          ^
-gpio_drive.c(133): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  133 |         //NVIC_EnableIRQ(EXTI0_IRQn); // K<ED>ch hoat ngat EXTI0 trong bo dieu khien ngat (NVIC)
-      |                                           ^
-5 warnings generated.
-compiling gpio_drive.c...
+adc_drive.c(108): warning: unused parameter 'pin' [-Wunused-parameter]
+  108 | int adc_rx(char adc, short port, short pin)
+      |                                        ^
+12 warnings and 1 error generated.
+compiling adc_drive.c...
+help_func.c(70): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+   70 |                 lstr[cnt] = num % div + 0x30;
+      |                           ~ ~~~~~~~~~~^~~~~~
+help_func.c(74): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+   74 |         lstr[cnt] = num +0x30;
+      |                   ~ ~~~~^~~~~
+help_func.c(8): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+    8 |         while(str[++len] != '\0');
+      |               ^~~
+help_func.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   23 |         while((str2[i+strlen - 1] != '\0' | str2[i+strlen]!= '\0') & (match == 0)){
+      |                ^~~~
+help_func.c(23): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   23 |         while((str2[i+strlen - 1] != '\0' | str2[i+strlen]!= '\0') & (match == 0)){
+      |                                             ^~~~
+help_func.c(25): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   25 |                         if(str1[j] == str2[i+j]){
+      |                            ^~~~
+help_func.c(25): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   25 |                         if(str1[j] == str2[i+j]){
+      |                                       ^~~~
+help_func.c(53): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   53 |         while(str2[i] != '\0'){
+      |               ^~~~
+help_func.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   56 |         while(str1[j] != '\0'){
+      |               ^~~~
+help_func.c(57): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   57 |                 str1[i+j] = str2[j];
+      |                 ^~~~
+help_func.c(57): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   57 |                 str1[i+j] = str2[j];
+      |                             ^~~~
+help_func.c(70): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   70 |                 lstr[cnt] = num % div + 0x30;
+      |                 ^~~~
+help_func.c(74): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   74 |         lstr[cnt] = num +0x30;
+      |         ^~~~
+help_func.c(76): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   76 |                 str[cnt -j] = lstr[j];
+      |                 ^~~
+help_func.c(76): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   76 |                 str[cnt -j] = lstr[j];
+      |                               ^~~~
+help_func.c(88): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   88 |                 check[0] = str[i];
+      |                            ^~~
+help_func.c(96): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+   96 |                         result = result*10+ (str[i] - 0x30);
+      |                                              ^~~
+help_func.c(107): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  107 |         while(str[i] != '\n'){
+      |               ^~~
+help_func.c(108): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  108 |                 str[i] = '\0';
+      |                 ^~~
+19 warnings generated.
+compiling help_func.c...
 SPI_drive.c(1): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -382,6 +258,24 @@ SPI_drive.c(86): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
       |                                      ^~~
 7 warnings generated.
 compiling SPI_drive.c...
+gpio_drive.c(10): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+gpio_drive.c(95): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   95 |                 EXTI->IMR(Interrupt mask register): Kiem soat viec cho ph<E9>p hoac ngan chan tung duong ngat ngoai tao ra mot yeu cau ngat cho CPU
+      |                                                                          ^
+gpio_drive.c(133): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  133 |         //NVIC_EnableIRQ(EXTI0_IRQn); // K<ED>ch hoat ngat EXTI0 trong bo dieu khien ngat (NVIC)
+      |                                           ^
+5 warnings generated.
+compiling gpio_drive.c...
 nokia5110lcd.c(1): warning: In file included from...
 C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
    18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
@@ -472,7 +366,40 @@ nokia5110lcd.c(192): warning: unsafe buffer access [-Wunsafe-buffer-usage]
       |                                                                   ^~~
 29 warnings generated.
 compiling nokia5110lcd.c...
-".\Objects\044__STM32F1_SPI_Communication_example_make_a_STOPWATCH_with_Nokia_screen_from_scratch.axf" - 9 Error(s), 93 Warning(s).
+systick_drive.c(1): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+3 warnings generated.
+compiling systick_drive.c...
+RTE/Device/STM32F103C8/system_stm32f10x.c(64): warning: In file included from...
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   18 |   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+      |                                                ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   19 |   *                code will be based on direct access to peripheral<92>s registers 
+      |                                                                     ^
+C:/Users/ASUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+   26 |   *           - Macros to access peripheral<92>s registers hardware
+      |                                            ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+      |             ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  166 | __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+      |     ^
+RTE/Device/STM32F103C8/system_stm32f10x.c(408): warning: unsafe buffer access [-Wunsafe-buffer-usage]
+  408 |   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+      |         ^~~~~~~~~~~~~
+5 warnings generated.
+compiling system_stm32f10x.c...
+".\Objects\044__STM32F1_SPI_Communication_example_make_a_STOPWATCH_with_Nokia_screen_from_scratch.axf" - 6 Error(s), 91 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -501,8 +428,8 @@ Package Vendor: Keil
    * Component: Keil::Device:Startup@1.0.0
       Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/system_stm32f10x.c
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
 Target not created.
 Build Time Elapsed:  00:00:01
 </pre>

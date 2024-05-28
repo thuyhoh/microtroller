@@ -7,5 +7,5 @@
   C:\Users\ASUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
   C:\Users\ASUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
   C:\Users\ASUS\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h \
-  SPI_drive.h gpio_drive.h systick_drive.h nokia5110lcd.h stopwatch.h \
-  help_func.h
+  SPI_drive.h gpio_drive.h systick_drive.h stopwatch.h nokia5110lcd.h \
+  help_func.h adc_drive.h

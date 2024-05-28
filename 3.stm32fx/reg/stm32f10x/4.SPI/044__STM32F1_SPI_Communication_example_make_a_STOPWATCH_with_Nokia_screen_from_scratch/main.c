@@ -6,10 +6,9 @@ doc: PCD8544.PDF
 #include "SPI_drive.h"
 #include "gpio_drive.h"
 #include "systick_drive.h"
-#include "nokia5110lcd.h"
 #include "stopwatch.h"
 #include "help_func.h"
-
+#include "adc_drive.h"
 
 /* 	connection lines
 PA0 -->RST
@@ -25,55 +24,23 @@ PB1 -> start/stop
 
 */
 //
-unsigned short sw_start = 0;
-unsigned short sw_rst = 1;
-unsigned int counter = 0;
-unsigned long millis = 0;
-
-
-unsigned short digit =0;
-char number[3];
-char time[7];	
+int adc_val;
 
 int main(void)
 {
 	systick_init();
-	sw_init();
+	adc_init(adc1,PA,0);
 	while(1){
-		// reset function
-		if(sw_rst){
-			sw_reset(&sw_rst,&millis);
+		if(adc_check(ADC1,PA,0))
+		{
+				adc_val = adc_rx(ADC1,PA,0);
 		}
-		// stop funct
-		else if((sw_start == 0)&& (counter != 0)){
-			sw_stop(&counter);
-		}else if((sw_start == 1)&& (counter != 0)){
-			sw_start(&millis, &counter, number,time);
 			
-		}
+	}
 		
-	}
+}
 	
 	
 	
-	return 0;
-}
 
-void EXTI0_IRQHandler(){
-	EXTI->PR |= 1;
-	sw_rst = 1;
-}
 
-void EXTI1_IRQHandler(){
-	EXTI->PR |= 2;
-	if(sw_start){
-		sw_start = 0;
-	}else{
-		sw_start = 1;
-		systick_int_start();
-	}
-}
-
-void SysTick_Handler(){
-	counter++;
-}
